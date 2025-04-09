@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex items-center justify-center p-4">
+  <div class="w-full max-w-md bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
+    <h1 class="text-2xl font-bold mb-6 text-center">Login</h1>
+    <form id="form-login" class="space-y-5">
+      <div>
+        <label for="idUsuario" class="block mb-1 font-medium">ID do Usuário</label>
+        <input id="idUsuario" name="idUsuario" type="text" class="w-full p-3 border rounded-lg dark:bg-gray-700" autocomplete="username" required>
+        <p id="erro-id" class="text-sm text-red-500 hidden"></p>
+      </div>
+
+      <div>
+        <label for="senha" class="block mb-1 font-medium">Senha</label>
+        <input id="senha" name="senha" type="password" class="w-full p-3 border rounded-lg dark:bg-gray-700" autocomplete="current-password" required>
+        <p id="erro-senha" class="text-sm text-red-500 hidden"></p>
+      </div>
+
+      <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition duration-300">
+        Entrar
+      </button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("form-login").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const id = document.getElementById("idUsuario").value.trim();
+      const senha = document.getElementById("senha").value.trim();
+      const erroId = document.getElementById("erro-id");
+      const erroSenha = document.getElementById("erro-senha");
+
+      erroId.classList.add("hidden");
+      erroSenha.classList.add("hidden");
+
+      if (!id || !senha) {
+        if (!id) {
+          erroId.textContent = "Informe seu ID.";
+          erroId.classList.remove("hidden");
+        }
+        if (!senha) {
+          erroSenha.textContent = "Informe sua senha.";
+          erroSenha.classList.remove("hidden");
+        }
+        return;
+      }
+
+      const usuario = JSON.parse(localStorage.getItem("usuario_" + id));
+
+      if (!usuario) {
+        erroId.textContent = "Usuário não encontrado.";
+        erroId.classList.remove("hidden");
+        return;
+      }
+
+      if (usuario.senha !== senha) {
+        erroSenha.textContent = "Senha incorreta.";
+        erroSenha.classList.remove("hidden");
+        return;
+      }
+
+      alert("Login bem-sucedido! Bem-vindo, " + usuario.nome);
+    });
+  </script>
+</body>
+
+</html>

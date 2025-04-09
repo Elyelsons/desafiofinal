@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Trilhas INOVA MARANHÃO</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white min-h-screen flex items-center justify-center px-4">
+  <div class="w-full max-w-2xl p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg space-y-6">
+    <h1 class="text-3xl font-bold text-center">Trilhas INOVA MARANHÃO</h1>
+    <form id="form-inscricao" class="space-y-4">
+      <!-- Exemplo de campo -->
+      <div>
+        <label for="nome" class="block font-medium">Nome Completo:</label>
+        <input type="text" id="nome" name="nome" required
+               class="w-full mt-1 p-2 rounded-md border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300" />
+        <p class="text-sm text-red-600 mt-1 hidden" id="erro-nome">Este campo é obrigatório.</p>
+      </div>
+
+      <!-- Campos adicionais seguem o mesmo padrão... -->
+
+      <button type="submit"
+              class="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition duration-300 shadow-md">
+        Enviar Inscrição
+      </button>
+
+      <button type="button" id="dark-toggle"
+              class="w-full py-2 px-3 bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-white font-semibold rounded-xl hover:bg-gray-300 dark:hover:bg-gray-700 transition duration-300">
+        Alternar Modo Escuro
+      </button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+ <script>
+  document.getElementById("dark-toggle").addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+  });
+</script>
+
+</body>
+</html>

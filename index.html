@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Trilhas INOVA MARANHÃO</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Trilhas INOVA MARANHÃO</h1>
+    <form id="inscricao-form">
+      <label for="nome">Nome completo:</label>
+      <input type="text" id="nome" name="nome" required autocomplete="name" />
+
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required autocomplete="email" />
+
+      <label for="idade">Idade:</label>
+      <input type="number" id="idade" name="idade" required />
+
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" name="telefone" required autocomplete="tel" />
+
+      <label for="trilha">Escolha sua trilha:</label>
+      <select id="trilha" name="trilha" required>
+        <option value="">Selecione uma trilha</option>
+        <option value="frontend">Trilha de Front-End</option>
+        <option value="backend">Trilha de Back-End</option>
+        <option value="jogos">Programação de Jogos</option>
+        <option value="dados">Ciência de Dados</option>
+      </select>
+
+      <label for="idUsuario">ID do Usuário:</label>
+      <input type="text" id="idUsuario" name="idUsuario" required />
+
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" required />
+
+      <button type="submit">Salvar Informações</button>
+    </form>
+    <p id="mensagem-sucesso" style="display: none; color: green; font-weight: bold;">Inscrição realizada com sucesso!</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

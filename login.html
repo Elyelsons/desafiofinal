@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Login - Trilhas INOVA</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Login</h1>
+    <form id="login-form">
+      <label for="login-id">ID do Usuário:</label>
+      <input type="text" id="login-id" name="login-id" required />
+
+      <label for="login-senha">Senha:</label>
+      <input type="password" id="login-senha" name="login-senha" required />
+
+      <button type="submit">Entrar</button>
+    </form>
+    <p id="login-erro" style="display: none; color: red; font-weight: bold;">ID ou senha incorretos.</p>
+    <p style="margin-top: 20px;">Ainda não tem cadastro? <a href="index.html">Cadastrar-se</a></p>
+  </div>
+
+  <script>
+    document.getElementById("login-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const loginId = document.getElementById("login-id").value.trim();
+      const loginSenha = document.getElementById("login-senha").value;
+
+      const usuarioSalvo = localStorage.getItem("usuario_" + loginId);
+
+      if (!usuarioSalvo) {
+        document.getElementById("login-erro").style.display = "block";
+        return;
+      }
+
+      const dados = JSON.parse(usuarioSalvo);
+
+      if (dados.senha === loginSenha) {
+        alert("Login realizado com sucesso!");
+        window.location.href = "index.html"; // Redireciona para a página de inscrição ou dashboard
+      } else {
+        document.getElementById("login-erro").style.display = "block";
+      }
+    });
+  </script>
+<script>
+  document.getElementById("dark-toggle").addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+  });
+</script>
+
+</body>
+</html>
